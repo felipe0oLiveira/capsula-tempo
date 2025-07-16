@@ -44,8 +44,10 @@ app.post('/test-email', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 5000, () => 
-  console.log('Server running'));
+app.listen(process.env.PORT || 5000, () => {
+  const port = process.env.PORT || 5000;
+  console.log(`Server running on http://localhost:${port}`);
+});
 
 // ================= JOB DE ENVIO AUTOMÁTICO =====================
 const { createClient } = require('@supabase/supabase-js');
