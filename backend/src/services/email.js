@@ -37,14 +37,11 @@ Se você não reconhece este envio, ignore este e-mail.`;
 
   const msg = {
     to,
-    from: {
-      email: process.env.SENDGRID_FROM_EMAIL, // agora vem da variável de ambiente
-      name: 'Seu Eu do Futuro'
-    },
+    from: process.env.SENDGRID_FROM_EMAIL || 'noreply@capsuladotempo.com', // fallback se não estiver definido
     subject,
     text: personalizedText,
     html: html || personalizedHtml,
-    replyTo: process.env.SENDGRID_FROM_EMAIL
+    replyTo: process.env.SENDGRID_FROM_EMAIL || 'noreply@capsuladotempo.com'
   };
   await sgMail.send(msg);
 }
