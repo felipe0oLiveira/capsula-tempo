@@ -54,10 +54,13 @@ router.post('/login', async (req, res) => {
 
   if (!user) return res.status(400).json({ error: 'Usuário não encontrado.' });
 
+  console.log('Usuário encontrado:', { id: user.id, email: user.email });
+
   const valid = await bcrypt.compare(password, user.password_hash);
   if (!valid) return res.status(401).json({ error: 'Senha inválida.' });
 
   const token = jwt.sign({ userId: user.id, email: user.email }, SECRET, { expiresIn: '1d' });
+  console.log('Token gerado com userId:', user.id);
   res.json({ token });
 });
 
