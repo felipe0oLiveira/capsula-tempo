@@ -182,3 +182,85 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull r
 ## Licença
 Este projeto está sob a licença MIT. 
 
+## Deploy e Produção
+
+### Pré-requisitos para Produção
+- Conta no [Supabase](https://supabase.com/) configurada
+- Conta no [SendGrid](https://sendgrid.com/) configurada
+- Domínio configurado (opcional)
+- Servidor ou plataforma de deploy (Vercel, Railway, Heroku, etc.)
+
+### Variáveis de Ambiente para Produção
+
+#### Backend
+```env
+NODE_ENV=production
+PORT=5000
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_service_role_key
+SENDGRID_API_KEY=your_sendgrid_api_key
+SENDGRID_FROM_EMAIL=noreply@yourdomain.com
+SECRET_KEY=your_jwt_secret_key
+FRONTEND_URL=https://yourdomain.com
+```
+
+#### Frontend
+```env
+VITE_API_URL=https://api.yourdomain.com
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_KEY=your_supabase_anon_key
+```
+
+### Deploy com Docker
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/seu-usuario/capsula-tempo.git
+cd capsula-tempo
+```
+
+2. **Configure as variáveis de ambiente:**
+```bash
+cp .env.example .env
+# Edite o arquivo .env com suas configurações
+```
+
+3. **Execute com Docker Compose:**
+```bash
+docker-compose up -d
+```
+
+### Deploy Manual
+
+#### Backend
+```bash
+cd backend
+npm install --production
+npm start
+```
+
+#### Frontend
+```bash
+cd frontend
+npm install
+npm run build
+# Sirva os arquivos da pasta dist/
+```
+
+### Plataformas de Deploy Recomendadas
+
+- **Vercel:** Para o frontend (gratuito)
+- **Railway:** Para o backend (gratuito com limitações)
+- **Heroku:** Para ambos (pago)
+- **DigitalOcean:** Para ambos (pago)
+
+### Configurações de Segurança
+
+- Use HTTPS em produção
+- Configure CORS adequadamente
+- Use variáveis de ambiente para secrets
+- Configure rate limiting
+- Implemente logs de auditoria
+
+--- 
+

@@ -1,16 +1,21 @@
 {
-  "name": "backend",
+  "name": "capsula-tempo-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend API para o projeto Cápsula do Tempo",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "build": "echo 'No build step required for Node.js'",
+    "test": "echo 'No tests specified'"
   },
-  "keywords": [],
+  "keywords": ["api", "nodejs", "express", "capsula-tempo"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
     "@supabase/supabase-js": "^2.51.0",

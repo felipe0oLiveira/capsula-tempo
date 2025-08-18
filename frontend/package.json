@@ -1,7 +1,8 @@
 {
-  "name": "frontend",
+  "name": "capsula-tempo-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Frontend React para o projeto Cápsula do Tempo",
   "type": "module",
   "scripts": {
     "dev": "vite",
