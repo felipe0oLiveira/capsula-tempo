@@ -22,6 +22,8 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Rotas de autenticação
 app.use('/auth', require('./src/routes/auth'));
+
+// Rotas de mensagens
 app.use('/messages', require('./src/routes/messages'));
 
 // Supabase - usar a mesma instância do src/lib/supabase.js
@@ -43,9 +45,15 @@ app.post('/test-email', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 5000, () => {
-  const port = process.env.PORT || 5000;
-  console.log(`Server running on http://localhost:${port}`);
+// Rota de health check para o Render
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 // ================= JOB DE ENVIO AUTOMÁTICO =====================
