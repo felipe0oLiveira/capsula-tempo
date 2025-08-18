@@ -187,12 +187,16 @@ Este projeto está sob a licença MIT.
 ### Pré-requisitos para Produção
 - Conta no [Supabase](https://supabase.com/) configurada
 - Conta no [SendGrid](https://sendgrid.com/) configurada
-- Domínio configurado (opcional)
-- Servidor ou plataforma de deploy (Vercel, Railway, Heroku, etc.)
+- Conta no [Vercel](https://vercel.com/) (gratuita)
+- Conta no [Railway](https://railway.app/) (gratuita)
 
-### Variáveis de Ambiente para Produção
+### Deploy Automático (Recomendado)
 
-#### Backend
+#### 1. Deploy do Backend no Railway
+
+1. **Acesse [Railway](https://railway.app/)**
+2. **Conecte seu GitHub** e selecione o repositório
+3. **Configure as variáveis de ambiente:**
 ```env
 NODE_ENV=production
 PORT=5000
@@ -201,33 +205,23 @@ SUPABASE_KEY=your_supabase_service_role_key
 SENDGRID_API_KEY=your_sendgrid_api_key
 SENDGRID_FROM_EMAIL=noreply@yourdomain.com
 SECRET_KEY=your_jwt_secret_key
-FRONTEND_URL=https://yourdomain.com
+FRONTEND_URL=https://your-frontend-url.vercel.app
 ```
 
-#### Frontend
+#### 2. Deploy do Frontend no Vercel
+
+1. **Acesse [Vercel](https://vercel.com/)**
+2. **Conecte seu GitHub** e selecione o repositório
+3. **Configure o projeto:**
+   - **Framework Preset:** Vite
+   - **Root Directory:** `frontend`
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+4. **Configure as variáveis de ambiente:**
 ```env
-VITE_API_URL=https://api.yourdomain.com
+VITE_API_URL=https://your-backend-url.railway.app
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_KEY=your_supabase_anon_key
-```
-
-### Deploy com Docker
-
-1. **Clone o repositório:**
-```bash
-git clone https://github.com/seu-usuario/capsula-tempo.git
-cd capsula-tempo
-```
-
-2. **Configure as variáveis de ambiente:**
-```bash
-cp .env.example .env
-# Edite o arquivo .env com suas configurações
-```
-
-3. **Execute com Docker Compose:**
-```bash
-docker-compose up -d
 ```
 
 ### Deploy Manual
@@ -247,16 +241,9 @@ npm run build
 # Sirva os arquivos da pasta dist/
 ```
 
-### Plataformas de Deploy Recomendadas
-
-- **Vercel:** Para o frontend (gratuito)
-- **Railway:** Para o backend (gratuito com limitações)
-- **Heroku:** Para ambos (pago)
-- **DigitalOcean:** Para ambos (pago)
-
 ### Configurações de Segurança
 
-- Use HTTPS em produção
+- Use HTTPS em produção (automático no Vercel/Railway)
 - Configure CORS adequadamente
 - Use variáveis de ambiente para secrets
 - Configure rate limiting
