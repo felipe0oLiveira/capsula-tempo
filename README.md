@@ -188,18 +188,24 @@ Este projeto está sob a licença MIT.
 - Conta no [Supabase](https://supabase.com/) configurada
 - Conta no [SendGrid](https://sendgrid.com/) configurada
 - Conta no [Vercel](https://vercel.com/) (gratuita)
-- Conta no [Railway](https://railway.app/) (gratuita)
+- Conta no [Render](https://render.com/) (gratuita)
 
 ### Deploy Automático (Recomendado)
 
-#### 1. Deploy do Backend no Railway
+#### 1. Deploy do Backend no Render
 
-1. **Acesse [Railway](https://railway.app/)**
+1. **Acesse [Render](https://render.com/)**
 2. **Conecte seu GitHub** e selecione o repositório
-3. **Configure as variáveis de ambiente:**
+3. **Configure o serviço:**
+   - **Type:** Web Service
+   - **Environment:** Node
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+   - **Root Directory:** `backend` (ou use a branch `backend-deploy`)
+4. **Configure as variáveis de ambiente:**
 ```env
 NODE_ENV=production
-PORT=5000
+PORT=10000
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_service_role_key
 SENDGRID_API_KEY=your_sendgrid_api_key
@@ -219,7 +225,7 @@ FRONTEND_URL=https://your-frontend-url.vercel.app
    - **Output Directory:** `dist`
 4. **Configure as variáveis de ambiente:**
 ```env
-VITE_API_URL=https://your-backend-url.railway.app
+VITE_API_URL=https://your-backend-url.onrender.com
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_KEY=your_supabase_anon_key
 ```
@@ -243,7 +249,7 @@ npm run build
 
 ### Configurações de Segurança
 
-- Use HTTPS em produção (automático no Vercel/Railway)
+- Use HTTPS em produção (automático no Vercel/Render)
 - Configure CORS adequadamente
 - Use variáveis de ambiente para secrets
 - Configure rate limiting
