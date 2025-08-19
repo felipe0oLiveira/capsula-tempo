@@ -48,9 +48,15 @@ app.post('/test-email', async (req, res) => {
   }
 });
 
+// Rota de health check para o Render
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 app.listen(process.env.PORT || 5000, () => {
   const port = process.env.PORT || 5000;
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
 // ================= JOB DE ENVIO AUTOMÁTICO =====================
