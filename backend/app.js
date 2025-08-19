@@ -13,7 +13,8 @@ const corsOptions = {
         process.env.FRONTEND_URL, 
         'https://capsula-tempo.vercel.app',
         'https://capsula-tempo-git-master-felipe0oliveira.vercel.app',
-        'https://capsula-tempo-felipe0oliveira.vercel.app'
+        'https://capsula-tempo-felipe0oliveira.vercel.app',
+        'https://capsula-tempo-9pl5.vercel.app'
       ] 
     : ['http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
