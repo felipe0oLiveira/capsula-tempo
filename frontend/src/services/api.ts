@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://capsula-tempo-dvdz.onrender.com';
 
 export async function login(email: string, password: string) {
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
