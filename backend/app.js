@@ -9,7 +9,12 @@ const app = express();
 // Configuração de CORS para produção
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, 'https://capsula-tempo.vercel.app'] 
+    ? [
+        process.env.FRONTEND_URL, 
+        'https://capsula-tempo.vercel.app',
+        'https://capsula-tempo-git-master-felipe0oliveira.vercel.app',
+        'https://capsula-tempo-felipe0oliveira.vercel.app'
+      ] 
     : ['http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
   optionsSuccessStatus: 200
