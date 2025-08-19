@@ -9,7 +9,12 @@ const app = express();
 // Configuração de CORS para produção
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL, 'https://capsula-tempo.vercel.app'] 
+    ? [
+        process.env.FRONTEND_URL, 
+        'https://capsula-tempo.vercel.app',
+        'https://capsula-tempo-git-master-felipe0oliveira.vercel.app',
+        'https://capsula-tempo-felipe0oliveira.vercel.app'
+      ] 
     : ['http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
   optionsSuccessStatus: 200
@@ -22,8 +27,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Rotas de autenticação
 app.use('/auth', require('./src/routes/auth'));
-
-// Rotas de mensagens
 app.use('/messages', require('./src/routes/messages'));
 
 // Supabase - usar a mesma instância do src/lib/supabase.js
@@ -45,15 +48,9 @@ app.post('/test-email', async (req, res) => {
   }
 });
 
-// Rota de health check para o Render
-app.get('/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+app.listen(process.env.PORT || 5000, () => {
+  const port = process.env.PORT || 5000;
+  console.log(`Server running on http://localhost:${port}`);
 });
 
 // ================= JOB DE ENVIO AUTOMÁTICO =====================
