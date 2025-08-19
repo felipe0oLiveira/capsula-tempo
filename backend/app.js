@@ -15,7 +15,8 @@ const corsOptions = {
         'https://capsula-tempo-git-master-felipe0oliveira.vercel.app',
         'https://capsula-tempo-felipe0oliveira.vercel.app',
         'https://capsula-tempo-9pl5.vercel.app',
-        'https://capsula-tempo-9p15-1p1e2d5yr.vercel.app'
+        'https://capsula-tempo-9p15-1p1e2d5yr.vercel.app',
+        'https://capsula-tempo-ocjhqy80m-felipe-oliveiradev-projects-91d8d78.vercel.app'
       ] 
     : ['http://localhost:3000', 'http://localhost:5173'],
   credentials: true,
